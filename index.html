@@ -9,9 +9,9 @@
     <div class="container">
       <div class="clock">
 
-        <div class="circle" style="--clr:#04fc43;"><i></i></div>
-        <div class="circle circle2" style="--clr:#fee800;"><i></i></div>
-        <div class="circle circle3" style="--clr:#ff2972;"><i></i></div>
+        <div class="circle" id="sc" style="--clr:#04fc43;"><i></i></div>
+        <div class="circle circle2" id="mn" style="--clr:#fee800;"><i></i></div>
+        <div class="circle circle3" id="hr" style="--clr:#ff2972;"><i></i></div>
 
         
         <span style="--i:1;"><b>1</b></span>
@@ -28,5 +28,23 @@
         <span style="--i:12;"><b>12</b></span>
       </div>
     </div>
+    <script>
+      let hr = document.querySelector('#hr');
+      let mn = document.querySelector('#mn');
+      let sc = document.querySelector('#sc');
+
+      setInterval(() =>{
+        let day = new Date();
+        let hh = day.getHours() * 30;
+        let mm = day.getMinutes() * 6;
+        let ss = day.getSeconds() * 6;
+
+        hr.style.transform = `rotateZ(${hh+(mm/12)}deg)`;
+        mn.style.transform = `rotateZ(${mm}deg)`;
+        sc.style.transform = `rotateZ(${ss}deg)`;
+      })
+
+      
+    </script>
   </body>
 </html>
